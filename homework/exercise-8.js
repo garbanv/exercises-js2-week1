@@ -55,7 +55,11 @@ var mentors = [
         company: "Google",
         position: "Senior developer",
         city: "Barcelona"
-      }
+      },
+    addSkill:addSkill,
+    addStudentsLikes: function(){
+      this.studentsLikes++
+    }
   },
   {
     firstName: "Leo",
@@ -100,3 +104,78 @@ var mentors = [
 ];
 
 //YOUR CODE HERE
+
+// 1. Loop through the array, and for each object, `console.log()` out the sentence only for
+// mentors that are in Barcelona and one of the skills is React
+// "Hi, my name is {firstName} {lastName}. I work in Barcelona and i know React."
+
+var theyKnowReact = mentors.filter(function(mentor){
+return mentor.skills.includes("React");
+}).map(function(mentor){
+ console.log(`Hi, my name is ${mentor.firstName} ${mentor.lastName}. i work in Barcelona and i know React`)
+});
+
+// 2. To those that work in Barcelona, set "Jun1" in the class attribute, 
+// and add a new skill to the list "SQL".
+// To add elements in an array you can use .push()
+// var animals = ["dog","cat"];
+// animals.push("horse"); //["dog","cat","horse"]
+
+function workInBarcelona (arr) {
+  arr.filter(function(mentor){
+  return mentor.job.city==="Barcelona";
+}).map(function(mentor){
+  return  mentor.class="Jun1", mentor.skills.push("SQL");
+//   return mentor.skills.push("SQL");
+})
+}
+
+// workInBarcelona(mentors);
+// console.log(mentors)
+
+// 3. Create an object method with the name .addSkill() to be able to ad skills from it
+function addSkill(skill){
+  this.mentor.skills.push(skill)
+}
+
+
+
+// 4. Create a method to add a skill to all memebrs in a list of mentors
+
+function addSkill(mentors,newSkill){
+  mentors.map(function(mentor,newskill){
+    this.mentor.addSkill(newSkill)
+  })
+}
+
+mentor.forEach(function(mentor){
+  mentor.addSkill = function(newSkill){
+    this.skills.push(newSkill)
+  }
+})
+
+
+//5
+function removeSkill(mentors,newSkill){
+  //your code here
+  mentors.forEach(function(mentor){
+let index = mentor.sklikks.indexOf(newSkill)  
+    mentor.skills.splice(index,1);
+})
+}
+
+mentors.forEach(function(mentor){
+  mentors.studentsLikes = function(){
+    this.studentsLikes++
+  }
+})
+
+//6
+function moreSkills(arr){
+  const numberofSkillsForMentor = mentors.map(function(mentor){
+    mentor.skills.length;
+  })
+  numberofSkillsForMentor.findIndex(function(skills){
+    skills === Math.max(...numberofSkillsForMentor);
+  })
+}
