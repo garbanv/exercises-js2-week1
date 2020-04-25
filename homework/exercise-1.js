@@ -38,13 +38,10 @@ return house.currentOwner.firstName + " " + house.currentOwner.lastName ;
 // returns an array of the owners' email addresses of the two houses
 function getEmailAddresses(house1, house2) {
 var house = [house1,house2];
-
 const emails = house.map(function(h){
 return h.currentOwner.email;
-
 })
-console.log(emails)
-
+// console.log(emails)
 return emails.join(", ");
 }
 
