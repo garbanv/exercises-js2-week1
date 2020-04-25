@@ -61,12 +61,32 @@ var restaurantFinderApplication = {
     restaurants: restaurants,
     findAvailableRestaurants: function(numberOfPeople) {
         // Complete here
+      const available = restaurants.filter(function(rest){
+        const availableSeats = rest.totalSeats - rest.numberOfCustomers; 
+        return rest.totalSeats >= numberOfPeople && availableSeats >= numberOfPeople;
+
+      }).map(function(rest){
+        return rest.name
+      })
+      return available.join(", ");
     },
     findRestaurantServingDish: function(dishName) {
         // Complete here
+      const saladRestaurants = restaurants.filter(function(rest){
+        return rest.menu.includes("salad")
+        
+      }).map(function(rest){
+        return rest.name;
+      })
+      return saladRestaurants;
     },
+  
     countNumberOfRestaurantsInArea: function(area) {
         // Complete here
+      const numbersOfRestaurants = restaurants.filter(function(rest){
+        return rest.address.area==="center";
+      }).length;
+      return numbersOfRestaurants;
     }
 };
 

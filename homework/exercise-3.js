@@ -17,9 +17,19 @@ var coffeeMachine = {
     },
     insertedAmount: 0,
     insertMoney: function(amount) {
-
+    this.insertedAmount = amount;
     },
     getCoffee: function(coffee) {
+      if(this.insertedAmount >= this.prices.blackCoffee && this.insertedAmount < this.prices.cappuccino  ) {
+        return "blackCoffee"
+      }  
+      if (this.insertedAmount >= this.prices.cappuccino && this.insertedAmount < this.prices.flatWhite  ){
+        return "capuccino"
+      } 
+      
+      if(this.insertedAmount >= this.prices.flatWhite) {
+        return "flatWhite"
+      }
 
     }
 };

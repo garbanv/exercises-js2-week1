@@ -38,13 +38,16 @@ var travelDestinations = [destination1, destination2, destination3, destination4
 DO NOT EDIT ANYTHING ABOVE THIS LINE
 WRITE YOUR CODE BELOW
 */
-
-
-var destinationNamesWithin500Kms = // Complete here
-
-var destinationNameReachableByFerry = // Complete here
-
-var destinationNamesMoreThan300KmsAwayByTrain = // Complete here (PRINT THE RESULT IN THE CONSOLE USING FOREACH)
+var destinationNamesWithin500Kms =
+    travelDestinations.filter(function (td) { return td.distanceKms < 500})
+        .map(function (td) { return td.destinationName })
+        
+var destinationNameReachableByFerry = travelDestinations.find(function (td)
+    { return td.transportations.includes('ferry')}
+    ).destinationName
+var destinationNamesMoreThan300KmsAwayByTrain =travelDestinations.filter(
+    function (td) {return td.distanceKms > 300 && td.transportations.includes('train') })
+            .map(function (td) { return td.destinationName })
 
 
 /*
